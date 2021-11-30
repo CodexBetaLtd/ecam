@@ -1,5 +1,6 @@
 package com.codex.ecam.model.budget;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -51,7 +52,7 @@ public class Budget extends BaseModel {
 	private Date budgetToDate;
 
 	@Column(name = "amount")
-	private Date budgetAmount;
+	private BigDecimal budgetAmount;
 
 	@Override
 	public Integer getId() {
@@ -111,11 +112,11 @@ public class Budget extends BaseModel {
 		this.budgetToDate = budgetToDate;
 	}
 
-	public Date getBudgetAmount() {
+	public BigDecimal getBudgetAmount() {
 		return budgetAmount;
 	}
 
-	public void setBudgetAmount(Date budgetAmount) {
+	public void setBudgetAmount(BigDecimal budgetAmount) {
 		this.budgetAmount = budgetAmount;
 	}
 

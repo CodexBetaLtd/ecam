@@ -25,6 +25,7 @@ public class BudgetMapper extends GenericMapper<Budget, BudgetDTO> {
 		dto.setBudgetFromDate(domain.getBudgetFromDate());
 		dto.setBudgetToDate(domain.getBudgetToDate());
 		dto.setBudgetType(domain.getBudgetType());
+		dto.setBudgetAmount(domain.getBudgetAmount());
 
 		setBudgetBusiness(domain, dto);
 		setBudgetSite(domain, dto);
@@ -61,7 +62,7 @@ public class BudgetMapper extends GenericMapper<Budget, BudgetDTO> {
 		domain.setBudgetFromDate(dto.getBudgetFromDate());
 		domain.setBudgetToDate(dto.getBudgetToDate());
 		domain.setBudgetType(dto.getBudgetType());
-
+		domain.setBudgetAmount(dto.getBudgetAmount());
 		setCommanDomainFields(dto, domain);
 	}
 
