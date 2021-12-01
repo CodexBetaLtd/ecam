@@ -91,19 +91,6 @@ public class BudgetController {
 		}
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String editForm(Integer id, Model model, RedirectAttributes ra) {
-		try {
-			final BudgetResult budget = budgetService.findById(id);
-			setCommonData(model, budget.getDtoEntity());
-			return "budget/add-view";
-		} catch (final Exception e) {
-			e.printStackTrace();
-			ra.addFlashAttribute("error", new ArrayList<String>().add("Error occured. Please Try again."));
-			return "redirect:/budget";
-		}
-	}
-
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@ModelAttribute("budget") @Valid BudgetDTO budgetDTO, Model model) {
 		try {
