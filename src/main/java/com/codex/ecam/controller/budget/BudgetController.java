@@ -43,7 +43,7 @@ public class BudgetController {
 		return "budget/home-view";
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String indexMachine(Model model, @ModelAttribute("success") final ArrayList<String> success, @ModelAttribute("error") final ArrayList<String> error) {
 		model.addAttribute("success", success);
 		model.addAttribute("error", error);
