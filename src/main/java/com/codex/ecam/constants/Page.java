@@ -83,10 +83,13 @@ public enum Page {
 	DASHBOARD_VIEW(52, SubMenu.WIDGET,"Dashboard View"),
 
 	MRN_ADD(53,SubMenu.MRN, "MRN Add Page"),
-	MRN_VIEW(54, SubMenu.MRN,"MRN View Page");
+	MRN_VIEW(54, SubMenu.MRN,"MRN View Page"),
+
+	BUDGET_ADD(57,SubMenu.MRN, "budget Add Page"),
+	BUDGET_VIEW(58, SubMenu.MRN,"Budget View Page");
 
 	/**************************
-	 * LAST ID = 56
+	 * LAST ID = 58
 	 ************************/
 	private Integer id;
 	private String name;
@@ -156,6 +159,8 @@ public enum Page {
 		//		list.add(ASSET_FACILITIES_ADD);
 		//		list.add(ASSET_EQUIPMENTS_VIEW);
 		//		list.add(ASSET_EQUIPMENTS_ADD);
+		list.add(BUDGET_ADD);
+		list.add(BUDGET_VIEW);
 
 		return list;
 	}
