@@ -1,11 +1,14 @@
 package com.codex.ecam.model.inventory.aod;
 
+
 import javax.persistence.*;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.inventory.stock.Stock;
 
 import java.math.BigDecimal;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name = "tbl_aod_item_stock")
@@ -21,6 +24,7 @@ public class AODItemStock extends BaseModel {
 
     @JoinColumn(name = "aod_item_id")
     @ManyToOne(targetEntity = AODItem.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
     private AODItem aodItem;
 
     @JoinColumn(name = "stock_id")

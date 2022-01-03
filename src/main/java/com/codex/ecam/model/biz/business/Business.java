@@ -2,14 +2,19 @@ package com.codex.ecam.model.biz.business;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.Country;
 import com.codex.ecam.model.admin.Currency;
 import com.codex.ecam.model.asset.Asset;
+import org.hibernate.envers.Audited;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 import java.util.Date;
 import java.util.Set;
 
+@Audited
 @Entity
 @Table(name="tbl_business")
 public class Business extends BaseModel {
@@ -28,6 +33,7 @@ public class Business extends BaseModel {
 
 	@JoinColumn( name = "business_type_id" )
 	@ManyToOne( targetEntity = BusinessTypeDefinition.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private BusinessTypeDefinition businessTypeDefinition;
 
 	@JoinColumn( name = "primary_currency_id" )
@@ -40,6 +46,7 @@ public class Business extends BaseModel {
 
 	@JoinColumn( name = "virtual_business_id" )
 	@ManyToOne( targetEntity = BusinessVirtual.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@Audited(targetAuditMode = NOT_AUDITED)
     private BusinessVirtual businessVirtual;
 
 	@Column(name="default_company")

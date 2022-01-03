@@ -2,6 +2,9 @@ package com.codex.ecam.model.admin;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+
 import com.codex.ecam.constants.UserLevel;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.AssetUser;
@@ -11,6 +14,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+@Audited
 @Entity
 @Table(name="tbl_user")
 public class User extends BaseModel implements Serializable {
@@ -158,13 +162,16 @@ public class User extends BaseModel implements Serializable {
 
 	@JoinColumn( name="user_skill_level_id" )
 	@ManyToOne( targetEntity = UserSkillLevel.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private UserSkillLevel userSkillLevel;
 
 	@JoinColumn( name="user_job_title_id" )
 	@ManyToOne( targetEntity = UserJobTitle.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private UserJobTitle userJobTitel;
 
 	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+	 @Audited(targetAuditMode = NOT_AUDITED)
 	private UserCredential userCredential;
 
 	@JoinColumn(name="currency_id")
@@ -172,12 +179,15 @@ public class User extends BaseModel implements Serializable {
 	private Currency currency;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<UserSite> userSites;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<AssetUser> assetUsers;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<UserCertification> userCertifications;
 
 	public Integer getId() {

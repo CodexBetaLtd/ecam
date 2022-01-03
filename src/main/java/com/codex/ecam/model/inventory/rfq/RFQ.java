@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.inventory.RFQStatus;
 import com.codex.ecam.listeners.inventory.rfq.RFQLogListener;
 import com.codex.ecam.listeners.inventory.rfq.RFQPrePersistListener;
@@ -26,7 +28,10 @@ import com.codex.ecam.model.admin.Country;
 import com.codex.ecam.model.asset.Asset;
 import com.codex.ecam.model.biz.business.Business;
 import com.codex.ecam.model.biz.supplier.Supplier;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
 
+@Audited
 @Entity
 @Table(name = "tbl_rfq")
 @EntityListeners( { RFQLogListener.class ,RFQPrePersistListener.class} )
@@ -136,15 +141,19 @@ public class RFQ extends BaseModel {
 	private List<RFQItem> rfqItems;
 	
 	@OneToMany(mappedBy = "rfq", fetch = FetchType.LAZY, cascade = { CascadeType.ALL }, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<RFQSupplier> rfqSupplier;
 	
 	@OneToMany(mappedBy = "rfq", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<RFQFile> rfqFiles;
 	
 	@OneToMany(mappedBy = "rfq", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<RFQNotification> rfqNotifications;
 	
 	@OneToMany(mappedBy = "rfq", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<RFQChangeLog> rfqStausChangeLogs;
 	
 

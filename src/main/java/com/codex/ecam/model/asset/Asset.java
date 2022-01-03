@@ -18,6 +18,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.envers.Audited;
+
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+
 import org.springframework.context.ApplicationEvent;
 
 import com.codex.ecam.constants.inventory.PartType;
@@ -37,6 +41,7 @@ import com.codex.ecam.model.inventory.rfq.RFQItem;
 import com.codex.ecam.model.inventory.stock.Stock;
 import com.codex.ecam.model.maintenance.scheduledmaintenance.ScheduledMaintenanceAsset;
 
+@Audited
 @Entity
 @Table(name="tbl_asset")
 @EntityListeners({AssetLogListener.class})
@@ -52,6 +57,7 @@ public class Asset extends BaseModel implements RootApplicationEventAware{
 
 	@JoinColumn( name = "asset_category_id" )
 	@ManyToOne( targetEntity = AssetCategory.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private AssetCategory assetCategory;
 
 	@JoinColumn( name = "parent_asset_id" )
@@ -64,10 +70,12 @@ public class Asset extends BaseModel implements RootApplicationEventAware{
 
 	@JoinColumn( name = "asset_status_id" )
 	@ManyToOne( targetEntity = AssetStatus.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private AssetStatus assetStatus;
 
 	@JoinColumn( name = "asset_offline_tracker_id" )
 	@ManyToOne( targetEntity = AssetOfflineTracker.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private AssetOfflineTracker offLineTracker;
 
 	@JoinColumn( name = "current_customer_id" )
@@ -88,10 +96,12 @@ public class Asset extends BaseModel implements RootApplicationEventAware{
 
 	@JoinColumn(name="brand_id")
 	@ManyToOne(targetEntity = AssetBrand.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private AssetBrand brand;
 
 	@JoinColumn(name="model_id")
 	@ManyToOne(targetEntity = AssetModel.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private AssetModel model;
 
 	@Column(name="name")
@@ -150,6 +160,9 @@ public class Asset extends BaseModel implements RootApplicationEventAware{
 
 	@Column(name="last_price")
 	private Integer lastPrice;
+	
+	@Column(name="test")
+	private String test;
 
 	@Column(name="part_type_id")
 	private PartType partType;
@@ -170,30 +183,38 @@ public class Asset extends BaseModel implements RootApplicationEventAware{
 	private Set<AssetUser> assetUsers;
 
 	@OneToMany(mappedBy = "asset", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<Warranty> warranties;
 
 	@OneToMany(mappedBy = "asset", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<AssetConsumingReference> partConsumingReferences;
 
 	@OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<AssetConsumingReference> assetConsumingReferences;
 
 	@OneToMany(mappedBy = "asset", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<AssetBusiness> assetBusinesses;
 
 	@OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
 	private Set<Stock> stocks;
 
 	@OneToMany(mappedBy = "asset", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<AssetFile> assetFiles;
 
 	@OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<PartNotification> partNotifications;
 
 	@OneToMany(mappedBy = "asset", fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<AssetLog> assetLogs;
 
 	@OneToMany(mappedBy = "part", fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<BOMGroupPart> bomGroupParts;
 
 	@OneToMany(mappedBy = "asset", fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
@@ -203,6 +224,7 @@ public class Asset extends BaseModel implements RootApplicationEventAware{
 	private Set<RFQItem> rfqItems;
 
 	@OneToMany(mappedBy = "asset", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<SparePart> spareParts;
 
 	@Transient

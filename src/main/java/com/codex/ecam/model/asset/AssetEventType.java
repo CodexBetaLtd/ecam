@@ -11,9 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.biz.business.Business;
 
+@Audited
 @Entity
 @Table(name = "tbl_asset_event_type")
 public class AssetEventType extends BaseModel {

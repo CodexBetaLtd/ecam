@@ -33,7 +33,7 @@ public abstract class BaseModel implements Serializable, PropertyChangeListener 
 	@JoinColumn(name = "created_by")
 	protected User createdUser;
 
-	@Column(name = "created_date")
+	@Column(name = "created_date" )
 	protected Date createdDate;
 
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)

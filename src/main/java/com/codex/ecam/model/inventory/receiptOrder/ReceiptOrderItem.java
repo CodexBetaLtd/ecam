@@ -16,12 +16,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Asset;
 import com.codex.ecam.model.inventory.aod.AODItem;
 import com.codex.ecam.model.inventory.purchaseOrder.PurchaseOrderItem;
 import com.codex.ecam.model.inventory.stock.Stock;
 
+@Audited
 @Entity
 @Table(name = "tbl_receipt_order_item")
 public class ReceiptOrderItem extends BaseModel {

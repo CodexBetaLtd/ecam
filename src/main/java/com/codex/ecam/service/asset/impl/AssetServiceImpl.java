@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.Predicate;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +26,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.hibernate.envers.AuditReader;
+import org.hibernate.envers.AuditReaderFactory;
+import org.hibernate.envers.query.AuditEntity;
+import org.hibernate.envers.query.AuditQuery;
+import org.hibernate.envers.query.criteria.AuditCriterion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +43,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.CollectionUtils;
+import org.springframework.beans.BeanUtils;
 
 import com.codex.ecam.constants.AssetCategoryType;
 import com.codex.ecam.constants.SMTriggerType;
@@ -177,6 +185,11 @@ public class AssetServiceImpl implements AssetService {
 
 	@Autowired
 	private AmazonS3ObjectUtil amazonS3ObjectUtil;
+	
+	@Autowired
+	private EntityManager entityManager;
+	
+	private AuditReader auditReader;
 
 	@Override
 	public DataTablesOutput<AssetDTO> findAll(FocusDataTablesInput input) throws Exception {
@@ -1657,6 +1670,7 @@ public class AssetServiceImpl implements AssetService {
 
 		return out;
 	}
+	
 
 	@Override
 	public void importBulkAssets(MultipartFile fileData, Integer bussinessId) throws Exception {

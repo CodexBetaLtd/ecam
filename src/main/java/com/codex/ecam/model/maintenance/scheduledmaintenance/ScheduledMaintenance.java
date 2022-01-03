@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.WorkOrderStatus;
 import com.codex.ecam.listeners.scheduledmaintenance.ScheduledMaintenanceLogListener;
 import com.codex.ecam.model.BaseModel;
@@ -29,6 +31,8 @@ import com.codex.ecam.model.maintenance.Priority;
 import com.codex.ecam.model.maintenance.project.Project;
 import com.codex.ecam.model.maintenance.workorder.WorkOrder;
 
+
+@Audited
 @Entity
 @Table(name = "tbl_scheduled_maintenance")
 @EntityListeners( ScheduledMaintenanceLogListener.class )

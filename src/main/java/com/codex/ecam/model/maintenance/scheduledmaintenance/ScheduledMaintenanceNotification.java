@@ -2,9 +2,12 @@ package com.codex.ecam.model.maintenance.scheduledmaintenance;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
 
+@Audited
 @Entity
 @Table(name = "tbl_scheduled_maintenance_notification")
 public class ScheduledMaintenanceNotification extends BaseModel {

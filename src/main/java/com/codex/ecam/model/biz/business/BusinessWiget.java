@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.app.AppWiget;
+import org.hibernate.envers.Audited;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 @Entity
 @Table(name = "tbl_business_wiget")
@@ -28,6 +30,7 @@ public class BusinessWiget extends BaseModel {
 
 	@JoinColumn(name = "business_app_id")
 	@ManyToOne(targetEntity = BusinessApp.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private BusinessApp businessApp;
 
 	@JoinColumn(name = "app_wiget_id")

@@ -11,9 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.TaxValue;
 
+@Audited
 @Entity
 @Table(name = "tbl_purchase_order_item_tax")
 public class PurchaseOrderItemTax extends BaseModel {

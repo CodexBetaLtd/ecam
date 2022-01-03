@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.TaskType;
 import com.codex.ecam.listeners.workorder.WorkOrderTaskLogListener;
 import com.codex.ecam.model.BaseModel;
@@ -28,6 +30,7 @@ import com.codex.ecam.model.asset.Asset;
 import com.codex.ecam.model.maintenance.scheduledmaintenance.ScheduledMaintenanceTask;
 import com.codex.ecam.model.maintenance.task.TaskGroup;
 
+@Audited
 @Entity
 @Table(name="tbl_wo_task")
 @EntityListeners( WorkOrderTaskLogListener.class )

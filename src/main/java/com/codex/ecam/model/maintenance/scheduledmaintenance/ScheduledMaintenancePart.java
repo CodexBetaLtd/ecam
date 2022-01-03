@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.listeners.scheduledmaintenance.ScheduledMaintenancePartLogListener;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Asset;
@@ -32,6 +36,7 @@ public class ScheduledMaintenancePart extends BaseModel {
 
 	@JoinColumn(name = "scheduled_maintenance_task_id")
 	@ManyToOne(targetEntity = ScheduledMaintenanceTask.class, fetch = FetchType.LAZY )
+	 @Audited(targetAuditMode = NOT_AUDITED)
 	private ScheduledMaintenanceTask scheduledMaintenanceTask;
 
 	@JoinColumn(name = "part_id")

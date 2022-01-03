@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.BillingTerm;
 import com.codex.ecam.constants.PurchaseOrderStatus;
 import com.codex.ecam.listeners.inventory.purchaseorder.PurchaseOrderChangeLogListener;
@@ -30,6 +32,7 @@ import com.codex.ecam.model.maintenance.Account;
 import com.codex.ecam.model.maintenance.ChargeDepartment;
 import com.codex.ecam.model.maintenance.workorder.WorkOrder;
 
+@Audited
 @Entity
 @Table(name = "tbl_purchase_order")
 @EntityListeners( { PurchaseOrderChangeLogListener.class,PurchaseOrderPrePersistListener.class } )

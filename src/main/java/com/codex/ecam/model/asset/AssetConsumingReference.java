@@ -13,6 +13,10 @@ import javax.persistence.PostPersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.listeners.asset.AssetPartLogListener;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.inventory.bom.BOMGroupPart;
@@ -32,10 +36,12 @@ public class AssetConsumingReference extends BaseModel {
 
 	@JoinColumn(name = "part_id")
 	@ManyToOne(targetEntity = Asset.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Asset part;
 
 	@JoinColumn(name = "asset_id")
 	@ManyToOne(targetEntity = Asset.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Asset asset;
 
 	@JoinColumn(name = "bom_group_part_id")

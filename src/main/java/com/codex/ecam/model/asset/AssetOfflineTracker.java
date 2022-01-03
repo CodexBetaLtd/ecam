@@ -13,6 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
 import com.codex.ecam.model.maintenance.workorder.WorkOrder;
@@ -39,10 +43,12 @@ public class AssetOfflineTracker extends BaseModel {
 	
 	@JoinColumn( name="asset_is_located_at_asset_id" )
 	@ManyToOne( targetEntity = Asset.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Asset assetIsLocatedAtAsset;
 	
 	@JoinColumn( name="asset_is_part_of_asset_id" )
 	@ManyToOne( targetEntity = Asset.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Asset assetIsPartOfAsset;
 	
 	@Column(name="reason_offline_id")
