@@ -14,7 +14,8 @@ public enum Menu {
 	BIZ(6, "Biz"),
 	APP(7, "App"),
 	NOTIFICATIONS(8, "Notifications"),
-	REPORT(9,"Report");
+	REPORT(9,"Report"),
+	BUDGET(10,"Budget");
 
 	private Integer id;
 	private String name;
@@ -34,6 +35,7 @@ public enum Menu {
 		list.add(Menu.SALE);
 		list.add(Menu.BIZ);
 		list.add(Menu.INVENTORY);
+		list.add(Menu.BUDGET);
 		list.add(Menu.APP);
 		return list;
 	}

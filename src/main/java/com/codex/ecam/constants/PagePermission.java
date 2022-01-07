@@ -293,10 +293,22 @@ public enum PagePermission {
 	//HAS_SETTINGS_WIGET(221, Page.DASHBOARD_VIEW, "Has 'Settings' Widget On The 'Dashboard'");
 
 	HAS_NEW_BUTTON_TAX_VIEW(231, Page.TAX_VIEW, "Has 'New' Button On The 'Tax View Page'"),
-	HAS_DELETE_BUTTON_TAX_VIEW(232, Page.TAX_VIEW, "Has 'Delete' Button On The 'View Add Page'");
+	HAS_DELETE_BUTTON_TAX_VIEW(232, Page.TAX_VIEW, "Has 'Delete' Button On The 'View Add Page'"),
+
+	HAS_SAVE_BUTTON_BUDGET_VIEW(233, Page.BUDGET_VIEW, "Has 'Save' Button On The 'Budget View Page' "),
+	HAS_NEW_BUTTON_BUDGET_VIEW(234, Page.BUDGET_VIEW, "Has 'New' Button On The 'Budget View Page'"),
+	HAS_DELETE_BUTTON_BUDGET_VIEW(235, Page.BUDGET_VIEW, "Has 'Delete' Button On The 'Budget View Page'"),
+	HAS_CANCEL_BUTTON_BUDGET_VIEW(236, Page.BUDGET_VIEW, "Has 'Cancel' Button On The 'Budget View Page'"),
+	HAS_EDIT_FUNCTION_BUDGET_VIEW(237, Page.BUDGET_VIEW, "Has 'Edit' Button On The 'Budget View' Page"),
+
+
+	HAS_SAVE_BUTTON_BUDGET_ADD(238, Page.BUDGET_ADD, "Has 'Save' Button On The 'Budget Add Page' "),
+	HAS_NEW_BUTTON_BUDGET_ADD(239, Page.BUDGET_ADD, "Has 'New' Button On The 'Budget Add Page'"),
+	HAS_DELETE_BUTTON_BUDGET_ADD(240, Page.BUDGET_ADD, "Has 'Delete' Button On The 'Budget Add Page'"),
+	HAS_CANCEL_BUTTON_BUDGET_ADD(241, Page.BUDGET_ADD, "Has 'Cancel' Button On The 'Budget Add Page'");
 
 	/***********************
-	 * LAST ID =
+	 * LAST ID = 241
 	 ************************/
 
 	private Integer id;
