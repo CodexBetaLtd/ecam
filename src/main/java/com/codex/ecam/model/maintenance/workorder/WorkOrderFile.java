@@ -14,8 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 
+@Audited
 @Entity
 @Table(name="tbl_wo_file")
 public class WorkOrderFile extends BaseModel {

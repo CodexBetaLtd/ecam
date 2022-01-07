@@ -2,6 +2,8 @@ package com.codex.ecam.model.inventory.aodRetun;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.inventory.AODReturnStatus;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Asset;
@@ -11,6 +13,7 @@ import com.codex.ecam.model.inventory.aod.AOD;
 import java.util.Date;
 import java.util.Set;
 
+@Audited
 @Entity
 @Table(name = "tbl_aod_return")
 public class AODReturn extends BaseModel {

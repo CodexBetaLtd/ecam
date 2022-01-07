@@ -13,10 +13,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.listeners.workorder.WorkOrderMeterReadingLogListener;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.AssetMeterReading;
 
+
+@Audited
 @Entity
 @Table(name = "tbl_wo_meter_readings")
 @EntityListeners( WorkOrderMeterReadingLogListener.class )

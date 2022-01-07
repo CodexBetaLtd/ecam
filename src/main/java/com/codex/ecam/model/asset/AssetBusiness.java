@@ -13,6 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.listeners.asset.AssetCustomerLogListener;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.biz.business.Business;
@@ -32,6 +36,7 @@ public class AssetBusiness extends BaseModel {
 
 	@JoinColumn( name="asset_id" )
 	@ManyToOne( targetEntity = Asset.class, fetch = FetchType.LAZY, cascade = { CascadeType.MERGE } )
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Asset asset;
 
 	@JoinColumn( name="business_id" )

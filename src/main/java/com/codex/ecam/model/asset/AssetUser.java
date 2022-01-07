@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.listeners.asset.AssetPersonalLogListener;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
@@ -35,6 +39,7 @@ public class AssetUser extends BaseModel {
 
 	@JoinColumn(name = "user_id")
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
 	private User user;
 
 	public Integer getId() {

@@ -2,6 +2,8 @@ package com.codex.ecam.model.inventory.stock;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.inventory.StockType;
 import com.codex.ecam.listeners.inventory.part.PartStockLogListener;
 import com.codex.ecam.listeners.inventory.stock.StockNotificationPublishListener;
@@ -16,6 +18,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+@Audited
 @Entity
 @Table(name = "tbl_stock")
 @EntityListeners({StockLogListener.class, PartStockLogListener.class, StockNotificationPublishListener.class})

@@ -11,8 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.MeterReadingUnit;
+
+@Audited
 @Entity
 @Table(name = "tbl_asset_meter_reading_formula_variable")
 public class AssetMeterReadingFormulaVariable extends BaseModel {

@@ -8,7 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
+
+@Audited
 @Entity
 @Table(name="tbl_country")
 public class Country extends BaseModel {

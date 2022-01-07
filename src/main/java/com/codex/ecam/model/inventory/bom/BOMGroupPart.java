@@ -6,6 +6,10 @@ import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Asset;
 import com.codex.ecam.model.asset.AssetConsumingReference;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import java.util.List;
 
 @Entity
@@ -22,6 +26,7 @@ public class BOMGroupPart extends BaseModel {
 
     @JoinColumn(name = "part_id")
     @ManyToOne(targetEntity = Asset.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
     private Asset part;
 
     @JoinColumn(name = "bom_group_id")

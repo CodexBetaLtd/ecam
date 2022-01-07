@@ -18,6 +18,10 @@ import javax.persistence.Table;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Asset;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 @Entity
 @Table(name="tbl_user_site")
 public class UserSite extends BaseModel{
@@ -33,6 +37,7 @@ public class UserSite extends BaseModel{
 
 	@JoinColumn(name="user_id")
 	@ManyToOne(targetEntity=User.class,fetch=FetchType.LAZY,cascade = {CascadeType.MERGE})
+	  @Audited(targetAuditMode = NOT_AUDITED)
 	private User user;
 
 	@JoinColumn(name="site_id")

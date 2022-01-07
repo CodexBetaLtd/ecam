@@ -2,6 +2,8 @@ package com.codex.ecam.model.inventory.rfq;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Asset;
 import com.codex.ecam.model.inventory.purchaseOrder.PurchaseOrderItemRFQItem;
@@ -9,7 +11,7 @@ import com.codex.ecam.model.inventory.purchaseOrder.PurchaseOrderItemRFQItem;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Audited
 @Entity
 @Table(name = "tbl_rfq_item")
 public class RFQItem extends BaseModel {

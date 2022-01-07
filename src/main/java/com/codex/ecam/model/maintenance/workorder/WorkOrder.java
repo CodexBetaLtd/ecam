@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.listeners.workorder.WorkOrderLogListener;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
@@ -32,7 +34,7 @@ import com.codex.ecam.model.maintenance.miscellaneous.WorkOrderMiscellaneousExpe
 import com.codex.ecam.model.maintenance.project.Project;
 import com.codex.ecam.model.maintenance.scheduledmaintenance.ScheduledMaintenance;
 
-
+@Audited
 @Entity
 @Table(name="tbl_wo")
 @EntityListeners( { WorkOrderLogListener.class } )

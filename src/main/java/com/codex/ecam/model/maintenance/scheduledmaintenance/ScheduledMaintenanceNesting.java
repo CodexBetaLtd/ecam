@@ -2,8 +2,11 @@ package com.codex.ecam.model.maintenance.scheduledmaintenance;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 
+@Audited
 @Entity
 @Table(name = "tbl_scheduled_maintenance_nesting")
 public class ScheduledMaintenanceNesting extends BaseModel {

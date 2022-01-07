@@ -2,7 +2,11 @@ package com.codex.ecam.model.admin;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
+
+@Audited
 @Entity
 @Table(name = "tbl_currency")
 public class Currency extends BaseModel {

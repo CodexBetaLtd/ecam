@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
 import com.codex.ecam.model.inventory.aod.AODItem;
@@ -22,6 +24,7 @@ import com.codex.ecam.model.inventory.receiptOrder.ReceiptOrderItem;
 import com.codex.ecam.model.inventory.stockAdjustment.StockAdjustment;
 import com.codex.ecam.service.inventory.impl.StockAdjustmentServiceImpl;
 
+@Audited
 @Entity
 @Table(name = "tbl_stock_history")
 public class StockHistory extends BaseModel {

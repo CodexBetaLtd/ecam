@@ -18,6 +18,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.constants.TaskType;
 import com.codex.ecam.listeners.scheduledmaintenance.ScheduledMaintenanceTaskLogListener;
 import com.codex.ecam.model.BaseModel;
@@ -25,6 +29,9 @@ import com.codex.ecam.model.admin.User;
 import com.codex.ecam.model.maintenance.task.TaskGroup;
 import com.codex.ecam.model.maintenance.workorder.WorkOrderTask;
 
+
+
+@Audited
 @Entity
 @Table(name = "tbl_scheduled_maintenance_task")
 @EntityListeners( ScheduledMaintenanceTaskLogListener.class )
@@ -40,6 +47,7 @@ public class ScheduledMaintenanceTask extends BaseModel {
 
 	@JoinColumn(name = "task_group_id")
 	@ManyToOne(targetEntity = TaskGroup.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private TaskGroup taskGroup;
 
 	@JoinColumn(name = "scheduled_maintenance_trigger_id")
@@ -48,6 +56,7 @@ public class ScheduledMaintenanceTask extends BaseModel {
 
 	@JoinColumn(name = "assigned_user_id")
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private User assignedUser;
 
 	@Column(name = "task_type_id")
@@ -60,9 +69,11 @@ public class ScheduledMaintenanceTask extends BaseModel {
 	private BigDecimal estimatedHours;
 
 	@OneToMany(mappedBy = "scheduledMaintenanceTask", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<ScheduledMaintenancePart> scheduledMaintenanceParts;
 
 	@OneToMany(mappedBy = "scheduledMaintenanceTask", fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<WorkOrderTask> workOrderTasks;
 
 	@Transient

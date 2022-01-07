@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.inventory.ReceiptOrderStatus;
 import com.codex.ecam.constants.inventory.ReceiptOrderType;
 import com.codex.ecam.listeners.inventory.receiptorder.ReceiptOrderLogListener;
@@ -29,6 +31,7 @@ import com.codex.ecam.model.biz.business.Business;
 import com.codex.ecam.model.biz.supplier.Supplier;
 import com.codex.ecam.model.inventory.purchaseOrder.PurchaseOrder;
 
+@Audited
 @Entity
 @Table(name = "tbl_receipt_order")
 @EntityListeners( { ReceiptorderPrePersistListener.class,ReceiptOrderLogListener.class } )

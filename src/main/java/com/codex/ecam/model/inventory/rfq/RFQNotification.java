@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name="tbl_rfq_notification")
@@ -30,6 +32,7 @@ public class RFQNotification extends BaseModel{
 
 	@JoinColumn(name="rfq_id")
 	@ManyToOne(targetEntity = RFQ.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private RFQ rfq;
 
 	@JoinColumn(name="user_id")

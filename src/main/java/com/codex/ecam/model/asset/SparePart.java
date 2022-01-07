@@ -13,6 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.model.BaseModel;
 
 @Entity
@@ -33,6 +37,7 @@ public class SparePart extends BaseModel {
 
 	@JoinColumn(name = "part_id")
 	@ManyToOne(targetEntity = Asset.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Asset sparePart;
 	
 	@Column(name="quantity")

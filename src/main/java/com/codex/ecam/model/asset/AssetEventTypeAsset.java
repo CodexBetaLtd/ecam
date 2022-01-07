@@ -15,8 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 
+@Audited
 @Entity
 @Table(name = "tbl_asset_event_type_asset")
 public class AssetEventTypeAsset extends BaseModel {

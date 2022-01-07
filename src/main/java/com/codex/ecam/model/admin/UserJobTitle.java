@@ -11,6 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.biz.business.Business;
 @Entity
@@ -26,6 +30,7 @@ public class UserJobTitle extends BaseModel {
 
 	@JoinColumn( name="business_id" )
 	@ManyToOne( targetEntity = Business.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
 	private Business business;
 
 	@Column(name="job_title_name")

@@ -37,6 +37,7 @@ dependencies {
 
     compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version: '3.0.0.RELEASE'
     compile group: 'com.github.darrachequesne', name: 'spring-data-jpa-datatables', version: '3.0'
+    compile group: 'org.hibernate', name: 'hibernate-envers', version: '4.3.11.Final'
     compile "org.aspectj:aspectjrt:1.8.6"
     compile "org.aspectj:aspectjweaver:1.8.6"
 
@@ -45,7 +46,6 @@ dependencies {
     compile "org.javassist:javassist:3.18.1-GA"
     compile "mysql:mysql-connector-java:5.1.30"
 	compile "org.hibernate:hibernate-validator:5.2.3.Final"
-	compile "org.hibernate:hibernate-validator-annotation-processor:5.2.3.Final"
 	compile "javax.el:javax.el-api:2.2.4"
 	compile "org.apache.commons:commons-lang3:3.4"
 	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'

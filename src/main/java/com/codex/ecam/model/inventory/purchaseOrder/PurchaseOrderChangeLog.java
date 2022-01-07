@@ -2,10 +2,13 @@ package com.codex.ecam.model.inventory.purchaseOrder;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.LogType;
 import com.codex.ecam.constants.PurchaseOrderStatus;
 import com.codex.ecam.model.BaseModel;
 
+@Audited
 @Entity
 @Table(name = "tbl_purchase_order_change_log")
 public class PurchaseOrderChangeLog extends BaseModel {

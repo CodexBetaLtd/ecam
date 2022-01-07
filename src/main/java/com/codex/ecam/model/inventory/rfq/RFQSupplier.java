@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.biz.supplier.Supplier;
+import org.hibernate.envers.Audited;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 
 @Entity
@@ -33,6 +35,7 @@ public class RFQSupplier extends BaseModel {
 	
 	@JoinColumn(name = "rfq_id")
 	@ManyToOne(targetEntity = RFQ.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private RFQ rfq;
 
 	public Integer getId() {

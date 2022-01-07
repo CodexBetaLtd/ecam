@@ -2,9 +2,13 @@ package com.codex.ecam.model.inventory.purchaseOrder;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.inventory.rfq.RFQItem;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
+@Audited
 @Entity
 @Table(name = "tbl_purchase_order_item_rfq_item")
 public class PurchaseOrderItemRFQItem extends BaseModel {
@@ -19,6 +23,7 @@ public class PurchaseOrderItemRFQItem extends BaseModel {
 
 	@JoinColumn(name = "purchase_order_item_id")
 	@ManyToOne(targetEntity = PurchaseOrderItem.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private PurchaseOrderItem purchaseOrderItem;
 
 	@JoinColumn(name = "rfq_item_id")

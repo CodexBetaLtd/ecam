@@ -2,8 +2,11 @@ package com.codex.ecam.model.biz.business;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 
+@Audited
 @Entity
 @Table(name = "tbl_business_classification")
 public class BusinessClassification extends BaseModel {

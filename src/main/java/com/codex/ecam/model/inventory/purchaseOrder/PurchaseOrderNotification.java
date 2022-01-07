@@ -2,9 +2,12 @@ package com.codex.ecam.model.inventory.purchaseOrder;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
 
+@Audited
 @Entity
 @Table(name="tbl_purchase_order_notification")
 public class PurchaseOrderNotification extends BaseModel {

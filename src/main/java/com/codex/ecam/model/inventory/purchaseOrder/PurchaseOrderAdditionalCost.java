@@ -2,11 +2,14 @@ package com.codex.ecam.model.inventory.purchaseOrder;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.PurchaseOrderAdditionalCostType;
 import com.codex.ecam.constants.ShippingType;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.biz.business.Business;
 
+@Audited
 @Entity
 @Table(name = "tbl_purchase_order_additional_cost")
 public class PurchaseOrderAdditionalCost extends BaseModel {

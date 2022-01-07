@@ -15,6 +15,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.constants.UserCertifiCationLevel;
 import com.codex.ecam.model.BaseModel;
 @Entity
@@ -48,6 +52,7 @@ public class UserCertification extends  BaseModel{
 
 	@JoinColumn(name = "user_id")
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+	  @Audited(targetAuditMode = NOT_AUDITED)
 	private User user;
 
 	@JoinColumn(name = "certificate_type_id")
