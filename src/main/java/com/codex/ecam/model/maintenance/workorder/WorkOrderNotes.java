@@ -4,10 +4,13 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.WorkOrderStatus;
 import com.codex.ecam.listeners.workorder.WorkOrderNoteLogListener;
 import com.codex.ecam.model.BaseModel;
 
+@Audited
 @Entity
 @Table(name="tbl_wo_notes")
 @EntityListeners({WorkOrderNoteLogListener.class})

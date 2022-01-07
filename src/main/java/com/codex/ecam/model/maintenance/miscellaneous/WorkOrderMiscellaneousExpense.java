@@ -2,13 +2,17 @@ package com.codex.ecam.model.maintenance.miscellaneous;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.maintenance.workorder.WorkOrder;
 
 import java.math.BigDecimal;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 /**
  */
+@Audited
 @Entity
 @Table(name = "tbl_wo_miscellaneous_expense")
 public class WorkOrderMiscellaneousExpense extends BaseModel {
@@ -27,6 +31,7 @@ public class WorkOrderMiscellaneousExpense extends BaseModel {
 
     @JoinColumn(name="miscellaneous_expense_type_id")
     @ManyToOne(targetEntity = MiscellaneousExpenseType.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
     private MiscellaneousExpenseType miscellaneousExpenseType;
 
     @Column(name="estimated_unit_cost")

@@ -2,12 +2,16 @@ package com.codex.ecam.model.asset;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.listeners.ScheduleTriggerEntityListener;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.maintenance.workorder.WorkOrder;
 
+
 import java.util.Date;
 
+@Audited
 @Entity
 @Table(name="tbl_asset_event")
 @EntityListeners(ScheduleTriggerEntityListener.class)

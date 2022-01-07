@@ -6,6 +6,9 @@ import com.codex.ecam.listeners.inventory.part.PartNotificationLogListener;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
 import com.codex.ecam.model.asset.Asset;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
 
 @Entity
 @Table(name="tbl_part_notification")
@@ -22,6 +25,7 @@ public class PartNotification extends BaseModel{
 
 	@JoinColumn(name="part_id")
 	@ManyToOne(targetEntity = Asset.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Asset part;
 
 	@JoinColumn(name="user_id")

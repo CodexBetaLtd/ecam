@@ -15,11 +15,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+
+import org.hibernate.envers.Audited;
 
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.app.App;
 import com.codex.ecam.model.app.RelatedApp;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
+@Audited
 @Entity
 @Table(name = "tbl_business_app")
 public class BusinessApp extends BaseModel {
@@ -34,6 +39,7 @@ public class BusinessApp extends BaseModel {
 
 	@JoinColumn(name = "app_id")
 	@ManyToOne(targetEntity = App.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private App app;
 
 	@JoinColumn(name = "business_id")
@@ -52,9 +58,11 @@ public class BusinessApp extends BaseModel {
 
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="related_app_id", referencedColumnName="app_id", updatable=false, insertable=false)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<RelatedApp> affectedApps;
 	
 	@OneToMany(mappedBy = "businessApp", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<BusinessWiget> businessWigets;
 	
 	public Integer getId() {

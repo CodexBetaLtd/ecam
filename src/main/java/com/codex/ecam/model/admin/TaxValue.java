@@ -6,9 +6,12 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.biz.business.Business;
 
+@Audited
 @Entity
 @Table(name = "tbl_tax_value")
 public class TaxValue extends BaseModel{

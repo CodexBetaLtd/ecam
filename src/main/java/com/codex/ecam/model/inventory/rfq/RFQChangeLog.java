@@ -1,6 +1,7 @@
 package com.codex.ecam.model.inventory.rfq;
 
 import javax.persistence.Column;
+import org.hibernate.envers.Audited;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 import com.codex.ecam.constants.LogType;
 import com.codex.ecam.constants.inventory.RFQStatus;
 import com.codex.ecam.model.BaseModel;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 
 @Entity
@@ -30,6 +32,7 @@ public class RFQChangeLog extends BaseModel {
 
 	@JoinColumn(name = "rfq_id")
 	@ManyToOne(targetEntity = RFQ.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
 	private RFQ rfq;
 
 	@Column(name = "rfq_status_id")

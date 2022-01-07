@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.inventory.AODStatus;
 import com.codex.ecam.constants.inventory.AODType;
 import com.codex.ecam.model.BaseModel;
@@ -24,6 +26,7 @@ import com.codex.ecam.model.asset.Asset;
 import com.codex.ecam.model.biz.business.Business;
 import com.codex.ecam.model.maintenance.workorder.WorkOrder;
 
+@Audited
 @Entity
 @Table(name = "tbl_aod")
 public class AOD extends BaseModel {

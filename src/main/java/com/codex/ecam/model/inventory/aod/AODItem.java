@@ -1,15 +1,20 @@
 package com.codex.ecam.model.inventory.aod;
 
 import javax.persistence.*;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+
+import org.hibernate.envers.Audited;
 
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Asset;
 import com.codex.ecam.model.inventory.mrn.MRNItem;
 import com.codex.ecam.model.inventory.stock.Stock;
+import org.hibernate.envers.Audited;
 
 import java.math.BigDecimal;
 import java.util.Set;
 
+@Audited
 @Entity
 @Table(name = "tbl_aod_item")
 public class AODItem extends BaseModel {
@@ -44,6 +49,7 @@ public class AODItem extends BaseModel {
     
     @JoinColumn(name = "mrn_item_id")
     @ManyToOne(targetEntity = MRNItem.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
     private MRNItem mrnItem;
 
     @Column(name = "batch_no")
@@ -62,6 +68,7 @@ public class AODItem extends BaseModel {
     private BigDecimal itemCost;
 
     @OneToMany(mappedBy = "aodItem", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @Audited(targetAuditMode = NOT_AUDITED)
     private Set<AODItemStock> aodItemStocks;
 
     public Integer getId() {

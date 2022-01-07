@@ -3,6 +3,9 @@ package com.codex.ecam.constants;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.envers.Audited;
+
+@Audited
 public enum WorkOrderStatus {
 
 	OPEN(0, "Open"),

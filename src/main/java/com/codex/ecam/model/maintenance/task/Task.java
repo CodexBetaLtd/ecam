@@ -2,11 +2,14 @@ package com.codex.ecam.model.maintenance.task;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.TaskType;
 import com.codex.ecam.model.BaseModel;
 
 import java.math.BigDecimal;
 
+@Audited
 @Entity
 @Table(name = "tbl_task")
 public class Task extends BaseModel {

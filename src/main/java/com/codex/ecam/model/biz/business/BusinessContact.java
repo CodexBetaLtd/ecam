@@ -2,9 +2,12 @@ package com.codex.ecam.model.biz.business;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Contact;
 
+@Audited
 @Entity
 @Table(name="tbl_business_contact")
 public class BusinessContact extends BaseModel {

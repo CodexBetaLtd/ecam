@@ -2,6 +2,8 @@ package com.codex.ecam.model.inventory.purchaseOrder;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.TaxValue;
 import com.codex.ecam.model.admin.User;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Audited
 @Entity
 @Table(name = "tbl_purchase_order_item")
 public class PurchaseOrderItem extends BaseModel {

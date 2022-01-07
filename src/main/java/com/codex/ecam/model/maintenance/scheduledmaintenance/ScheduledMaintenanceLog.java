@@ -11,9 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.LogType;
 import com.codex.ecam.model.BaseModel;
 
+@Audited
 @Entity
 @Table( name = "tbl_scheduled_maintenance_log" )
 public class ScheduledMaintenanceLog extends BaseModel {

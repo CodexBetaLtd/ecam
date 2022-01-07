@@ -21,6 +21,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.MeterReadingLogicType;
 import com.codex.ecam.constants.SMABCTriggerType;
 import com.codex.ecam.constants.SMMeterReadingType;
@@ -34,6 +36,7 @@ import com.codex.ecam.model.asset.AssetEventTypeAsset;
 import com.codex.ecam.model.asset.AssetMeterReading;
 import com.codex.ecam.model.maintenance.CalendarEvent;
 
+@Audited
 @Entity
 @Table(name = "tbl_scheduled_maintenance_trigger")
 @EntityListeners( ScheduledMaintenanceTriggerLogListener.class )

@@ -1,6 +1,7 @@
 package com.codex.ecam.model.inventory.rfq;
 
 import java.util.Date;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.codex.ecam.model.BaseModel;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name="tbl_rfq_file")
@@ -41,6 +43,7 @@ public class RFQFile extends BaseModel {
 
 	@JoinColumn(name = "rfq_id")
 	@ManyToOne(targetEntity = RFQ.class, fetch = FetchType.LAZY)
+	 @Audited(targetAuditMode = NOT_AUDITED)
 	private RFQ rfq;
 
 	public Integer getId() {

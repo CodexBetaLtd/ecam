@@ -17,9 +17,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.listeners.asset.AssetMeterReadingValueLogListener;
 import com.codex.ecam.model.BaseModel;
 
+
+@Audited
 @Entity
 @Table(name = "tbl_asset_meter_reading_value")
 @EntityListeners({AssetMeterReadingValueLogListener.class})

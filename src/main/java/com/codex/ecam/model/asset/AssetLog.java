@@ -5,6 +5,10 @@ import javax.persistence.*;
 import com.codex.ecam.constants.LogType;
 import com.codex.ecam.model.BaseModel;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 @Entity
 @Table( name = "tbl_asset_log")
 public class AssetLog extends BaseModel {
@@ -19,6 +23,7 @@ public class AssetLog extends BaseModel {
 	
 	@JoinColumn(name = "asset_id")
 	@ManyToOne( targetEntity = Asset.class, fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Asset asset;
 
     @Column(name = "log_type_id")

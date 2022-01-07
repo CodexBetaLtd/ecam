@@ -17,6 +17,10 @@ import javax.persistence.Table;
 
 import org.springframework.core.task.support.TaskExecutorAdapter;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+import org.hibernate.envers.Audited;
+
+
 import com.codex.ecam.constants.AssetCategoryType;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.biz.business.Business;
@@ -55,6 +59,7 @@ public class AssetCategory extends BaseModel {
 	private Business business;
 
 	@OneToMany(mappedBy = "assetCategory", fetch = FetchType.LAZY)
+	@Audited(targetAuditMode = NOT_AUDITED)
 	private Set<Asset> assets;
 	
 	@OneToMany(mappedBy = "assetCategory", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY,orphanRemoval=true)

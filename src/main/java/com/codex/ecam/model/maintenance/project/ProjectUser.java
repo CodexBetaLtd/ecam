@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.admin.User;
+import org.hibernate.envers.Audited;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 @Entity
 @Table(name = "tbl_project_user")
@@ -19,6 +21,7 @@ public class ProjectUser extends BaseModel {
 
     @JoinColumn(name = "project_id")
     @ManyToOne(targetEntity = Project.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
     private Project project;
 
     @JoinColumn(name = "user_id")

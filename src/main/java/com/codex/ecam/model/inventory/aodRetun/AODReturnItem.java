@@ -2,11 +2,14 @@ package com.codex.ecam.model.inventory.aodRetun;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.inventory.aod.AODItem;
 
 import java.math.BigDecimal;
 
+@Audited
 @Entity
 @Table(name = "tbl_aod_return_item")
 public class AODReturnItem extends BaseModel {

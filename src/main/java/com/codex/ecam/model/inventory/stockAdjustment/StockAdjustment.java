@@ -2,6 +2,8 @@ package com.codex.ecam.model.inventory.stockAdjustment;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.constants.inventory.StockAdjustmentStatus;
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.Asset;
@@ -11,6 +13,7 @@ import com.codex.ecam.model.inventory.stock.Stock;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Audited
 @Entity
 @Table(name = "tbl_stock_adjustment")
 public class StockAdjustment extends BaseModel {

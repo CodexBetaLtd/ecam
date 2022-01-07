@@ -13,9 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 import com.codex.ecam.model.asset.AssetMeterReading;
 
+@Audited
 @Entity
 @Table(name="tbl_meter_reading_unit")
 public class MeterReadingUnit extends BaseModel {

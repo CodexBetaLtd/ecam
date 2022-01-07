@@ -2,8 +2,11 @@ package com.codex.ecam.model.inventory.purchaseOrder;
 
 import javax.persistence.*;
 
+import org.hibernate.envers.Audited;
+
 import com.codex.ecam.model.BaseModel;
 
+@Audited
 @Entity
 @Table(name = "tbl_purchase_order_discussion")
 public class PurchaseOrderDiscussion extends BaseModel {

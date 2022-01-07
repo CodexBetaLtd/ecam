@@ -1,8 +1,10 @@
 package com.codex.ecam.model.app;
 
 import javax.persistence.*;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 import com.codex.ecam.model.BaseModel;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name = "tbl_related_app")
@@ -22,6 +24,7 @@ public class RelatedApp extends BaseModel {
 
     @JoinColumn(name = "related_app_id")
     @ManyToOne(targetEntity = App.class, fetch = FetchType.LAZY)
+    @Audited(targetAuditMode = NOT_AUDITED)
     private App relatedApp;
 
     public Integer getId() {
